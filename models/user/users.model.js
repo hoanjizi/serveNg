@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const UserSchema = mongoose.Schema({
-  nickname :{
-    type : String,
-    default:""
+  nickname: {
+    type: String,
+    default: ""
   },
-  firstname:{
-    type:String,
-    require:true
+  firstname: {
+    type: String,
+    require: true
   },
-  lastname:{
-    type:String,
-    require:true
+  lastname: {
+    type: String,
+    require: true
   },
   email: {
     type: String,
@@ -31,17 +31,21 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  country:{
-    type :String
+  country: {
+    type: String
   },
   verified: {
     type: Boolean,
     default: true
-}
+  },
+  role:{
+    type:String,
+    default:5
+  }
 }, {
     timestamps: true
   });
-UserSchema.pre('save', function (next) { 
+UserSchema.pre('save', function (next) {
   var user = this;
   bcrypt.hash(user.password, 10, function (err, hash) {
     if (err) {
@@ -51,6 +55,6 @@ UserSchema.pre('save', function (next) {
     user.passwordConf = hash;
     next()
   })
-  
+
 });
 module.exports = mongoose.model('User', UserSchema);

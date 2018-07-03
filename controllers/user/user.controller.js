@@ -70,7 +70,7 @@ exports.findOneUser = (req) => {
                         timeToken: moment().unix() + 86400
                     });
                     return newtoken.save().then((data) => {
-                        return ViewModel.viewmodels.usertoken(data.idUser, data.token)
+                        return ViewModel.viewmodels.usertoken(data.idUser, data.token,user.role)
                     })
                 }
                 else {

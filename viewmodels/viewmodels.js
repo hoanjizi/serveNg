@@ -1,7 +1,7 @@
 class viewmodels {
-    static usertoken(idUser,token)
+    static usertoken(idUser,token,role)
     {
-        return {idUser,token}
+        return {idUser,token,role}
     }
     static listuser(users)
     {
