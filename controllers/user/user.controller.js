@@ -22,10 +22,14 @@ const UserLogic = require('../../models/user/user.logic.js')
 
 exports.createUser = (req, res) => {
     const user = new User({
+        nickname:req.body.nickname,
+        firstname:req.body.firstname,
+        lastname:req.body.lastname,
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
         passwordConf: req.body.passwordConf,
+        country:req.body.country
     });
     let random = Utils.randomtoken(35)
     return user.save().then(data => {
@@ -48,11 +52,6 @@ exports.findAllUser = (req, res) => {
 };
 
 exports.findOneUser = (req) => {
-    //valid req
-    //find user
-    //compare password
-    //store information
-    //return user.finone().then(compare).then(store user)
     return User.findOne({ username: req.body.username })
         .then(user => {
 
