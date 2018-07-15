@@ -67,10 +67,11 @@ exports.findOneUser = (req) => {
                     let newtoken = new Token({
                         idUser: user._id,
                         token: tokeninsert,
+                        nickname:user.nickname,
                         timeToken: moment().unix() + 86400
                     });
                     return newtoken.save().then((data) => {
-                        return ViewModel.viewmodels.usertoken(data.idUser, data.token,user.role)
+                        return ViewModel.viewmodels.usertoken(data.idUser, data.token,user.role,user.nickname)
                     })
                 }
                 else {
