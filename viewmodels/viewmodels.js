@@ -22,12 +22,22 @@ class viewmodelsNotifi {
     static getThreeNotifi(notifi) {
         let arrayNotifi = []
         notifi.forEach(e => {
-            arrayNotifi.push({ id: e._id, title: e.title, content: e.content,contentmini: e.contentmini })
+            arrayNotifi.push({ id: e._id, title: e.title, content: e.content, contentmini: e.contentmini })
         });
         return arrayNotifi
     }
-    static getNotifiId(notifi){
-        return {id: notifi._id, title: notifi.title, content: notifi.content,contentmini: notifi.contentmini}
+    static getNotifiId(notifi) {
+        return { id: notifi._id, title: notifi.title, content: notifi.content, contentmini: notifi.contentmini }
+    }
+    static getCountPage(count) {
+        return { count: count }
+    }
+    static getFiveNotifi(notifi) {
+        let arrayNotifi = []
+        notifi.forEach(e => {
+            arrayNotifi.push({ id: e._id, title: e.title, content: e.content, contentmini: e.contentmini })
+        });
+        return arrayNotifi
     }
 }
 module.exports = {
