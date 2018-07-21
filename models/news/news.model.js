@@ -1,23 +1,37 @@
 const mongoose = require('mongoose');
 const NewsSchema = mongoose.Schema({
-    episodes: {
-        type: String,
-        default: "",
-        require: true
-    },
-    number: {
-        type: String,
-        default: "",
-        require: true
-    },
-    title: {
-        type: String,
-        default: "",
-        require: true
-    },
-    content: {
+    id: {
         type: String,
         default: ""
+    },
+    tieude: {
+        type: String,
+        default: ""
+    },
+    tacgia: {
+        type: String,
+        default: ""
+
+    },
+    tukhoa: {
+        type: String,
+        default: ""
+    },
+    tomtat: {
+        type: String,
+        default: ""
+    },
+    tenfile: {
+        type: String,
+        default: ""
+    },
+    sobao: {
+        type: String,
+        default: ""
+    },
+    trangthai: {
+        type: Boolean,
+        default: false
     }
 }, {
         timestamps: true

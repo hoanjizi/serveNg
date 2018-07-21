@@ -17,6 +17,9 @@ class viewmodels {
     static getprofileUser(users) {
         return { lastName: users.lastName, fisrtName: users.fisrtName, img: users.img, address: users.address, phone: users.phone }
     }
+    static message(text) {
+        return { message: text }
+    }
 }
 class viewmodelsNotifi {
     static getThreeNotifi(notifi) {
@@ -40,8 +43,21 @@ class viewmodelsNotifi {
         return arrayNotifi
     }
 }
+class viewmodelsNews {
+    static getNewsWithid(news) {
+        let arrayNews = []
+        news.forEach(e => {
+            arrayNews.push({ id: e._id, iduser: e.id, tieude: e.tieude, tacgia: e.tacgia, tukhoa: e.tukhoa, tomtat: e.tomtat, tenfile: e.tenfile, sobao: e.sobao, trangthai: e.trangthai,createdAt: e.createdAt })
+        });
+        return arrayNews
+    }
+    static getNewsWithIdMongo(e)
+    {
+        return { id: e._id, iduser: e.id, tieude: e.tieude, tacgia: e.tacgia, tukhoa: e.tukhoa, tomtat: e.tomtat, tenfile: e.tenfile, sobao: e.sobao, trangthai: e.trangthai,createdAt: e.createdAt }
+    }
+}
 module.exports = {
-    viewmodels, viewmodelsNotifi
+    viewmodels, viewmodelsNotifi, viewmodelsNews
 }
 
 /*

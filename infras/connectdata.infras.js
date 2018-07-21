@@ -15,6 +15,7 @@ module.exports.wrapMongoConnection = (func) => {
         console.log(result)
         console.log('database connection is going to end after process' + new Date())
         //close connection
+        if(mongoose != undefined)
         return mongoose.disconnect().then(()=> {
             console.log("DB connection closed")
             return result
@@ -22,6 +23,7 @@ module.exports.wrapMongoConnection = (func) => {
     }).catch(err => {
         console.log('error connect database', err)
         //close connection
+        if(mongoose != undefined)
         return mongoose.disconnect().then(()=> {
             console.log("DB connection closed")
             throw err
