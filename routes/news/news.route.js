@@ -6,5 +6,6 @@ module.exports = (app) => {
     app.post('/news/createnews',urlEncode, Wraper("Createnews",newsCtl.createNews,true))
     app.get('/news/getnewid', Wraper("newsid",newsCtl.findNewsWithId,true))
     app.get('/news/getnewidmongo', Wraper("newsidmongo",newsCtl.findNewsWithIdMongo,true))
+    app.get('/news/getnewschuaduyet', Wraper("newschuaduyet",newsCtl.getNewsChuaDuyet,true))
     app.get('/news/download/:ten', newsCtl.downloadFile)
 }

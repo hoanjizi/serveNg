@@ -32,6 +32,10 @@ const NewsSchema = mongoose.Schema({
     trangthai: {
         type: Boolean,
         default: false
+    },
+    idUserDanhgia: {
+        type: String,
+        default: ""
     }
 }, {
         timestamps: true
