@@ -7,5 +7,8 @@ module.exports = (app) => {
     app.get('/news/getnewid', Wraper("newsid",newsCtl.findNewsWithId,true))
     app.get('/news/getnewidmongo', Wraper("newsidmongo",newsCtl.findNewsWithIdMongo,true))
     app.get('/news/getnewschuaduyet', Wraper("newschuaduyet",newsCtl.getNewsChuaDuyet,true))
+    app.post('/news/updateiduserrole', Wraper("updateiduserrole",newsCtl.createIdUserDanhGia,true))
+    app.post('/news/getcountroleuser', Wraper("getCountRoleUser",newsCtl.getCountRoleUser,true))
+    app.post('/news/updateStatusRoleUser', Wraper("updateStatusRoleUser",newsCtl.updateStatusRoleUser,true))
     app.get('/news/download/:ten', newsCtl.downloadFile)
 }

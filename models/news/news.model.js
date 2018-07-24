@@ -33,9 +33,8 @@ const NewsSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
-    idUserDanhgia: {
-        type: String,
-        default: ""
+    idUserDanhGia: {
+        type: []
     }
 }, {
         timestamps: true

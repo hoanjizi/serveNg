@@ -1,4 +1,5 @@
 const News = require('../../models/news/news.model')
+const DanhGia = require('../../models/danhgia/danhgia.model')
 const ExpressError = require('../../models/error.model')
 const ViewModel = require('../../viewmodels/viewmodels.js')
 
@@ -42,7 +43,32 @@ exports.downloadFile = (req, res) => {
     res.download(__dirname + "/file/" + req.params.ten)
 }
 exports.getNewsChuaDuyet = (req, res) => {
-    return News.find({trangthai:false}).then(rtl=>{
+    return News.find({ trangthai: false }).then(rtl => {
         return ViewModel.viewmodelsNews.getNewsWithid(rtl)
+    })
+}
+exports.createIdRoleUser = (req) => {
+    let danhGia = new DanhGia({
+        idNews: req.body.idNews,
+        idUser: req.body.idUser
+    })
+    return danhGia.save().then(rtl => {
+        return ViewModel.viewmodels.message('saved')
+    })
+}
+exports.createIdUserDanhGia = (req) => {
+    console.log(req.body)
+    return News.findByIdAndUpdate(req.body.idNews,{idUserDanhGia:req.body.arrayIdUser})
+}
+//danh gia
+exports.getCountRoleUser = (req) => {
+    return DanhGia.find({ idUser: req.query.idUser, idNews: req.query.idNews }).count().exec().then(count => {
+        return ViewModel.viewmodelsNotifi.getCountPage(count)
+    })
+}
+
+exports.updateStatusRoleUser = (req) => {
+    return DanhGia.findOneAndUpdate({ idUser: req.body.idUser, idNews: req.body.idNews }, { $set: { status: true } }).then(res => {
+        return ViewModel.viewmodels.message('updated')
     })
 }

@@ -4,6 +4,7 @@ module.exports = (app) => {
     const Wraper = require('../../infras/wraper.infras.js')
     app.post('/users',urlEncode, Wraper("insertuser",users.createUser,false))
     app.get('/users', Wraper("getuser",users.findAllUser,true))
+    app.get('/getrolethree', Wraper("getuser",users.getUserRoleThree,true))
     app.post('/login',urlEncode,Wraper("Login", users.findOneUser,false))
 
 }

@@ -81,4 +81,9 @@ exports.findOneUser = (req) => {
 
         })
 }
+exports.getUserRoleThree = (req)=>{
+    return User.find({role:"3"}).then(res=>{
+        return ViewModel.viewmodels.listuser(res)
+    })
+}
 
