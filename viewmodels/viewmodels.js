@@ -9,6 +9,9 @@ class viewmodels {
         });
         return arrayUsers
     }
+    static user(e) {
+        return { id: e._id, username: e.username, email: e.email, role: e.role,nickname: e.nickname }
+    }
     static profileUser(users) {
 
         return { lastName: users.lastName, fisrtName: users.fisrtName, img: users.img, address: users.address, phone: users.phone }
@@ -39,6 +42,13 @@ class viewmodelsNotifi {
         let arrayNotifi = []
         notifi.forEach(e => {
             arrayNotifi.push({ id: e._id, title: e.title, content: e.content, contentmini: e.contentmini })
+        });
+        return arrayNotifi
+    }
+    static getUserDanhGia(notifi) {
+        let arrayNotifi = []
+        notifi.forEach(e => {
+            arrayNotifi.push({ id: e.id })
         });
         return arrayNotifi
     }

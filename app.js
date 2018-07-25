@@ -7,6 +7,7 @@ const Token = require('./utils/token.utils.js')
 const fileUpload = require('express-fileupload')
 const routes = require("./routes/root.route")
 const connectiondata = require('./infras/connectdata.infras')
+const dbConfig = require('./config/database.config')
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -25,7 +26,8 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Origin, X-Auth-Token,Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
-});  
+});
+mongoose.connect(dbConfig.url)
 app.use('/api', routes)
 const swaggerUi = require('swagger-ui-express'),
     swaggerDocument = require('./swagger.json')

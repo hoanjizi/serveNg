@@ -8,7 +8,7 @@ module.exports.randomtoken = () => {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     return text;
 }
-module.exports.auth = (req, connection) => {
+module.exports.auth = (req) => {
     return Promise.resolve().then(() => {
         let user = { isAuthorized: false, message: 'invalid user authentication' }
         if (!req.headers.authorization) {

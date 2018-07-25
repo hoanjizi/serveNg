@@ -86,4 +86,9 @@ exports.getUserRoleThree = (req)=>{
         return ViewModel.viewmodels.listuser(res)
     })
 }
+exports.getUserId = (req) => {
+    return User.findById(req.query.id).then(rtl => {
+        return ViewModel.viewmodels.user(rtl)
+    })
+}
 

@@ -47,13 +47,12 @@ class ExpressResponse {
 const wrapForExpressWithMongo = (opName, func, requireAuthorization) => {
     return (req, res) => {
         return wrapper(opName, req, res, (req) => {
-            return wrapMongo((connection) => {
                 if (requireAuthorization) {
-                    return auth(req, connection).then((user) => {
+                    return auth(req).then((user) => {
                         console.log(user)
                         req.user = user
                         if (req.user.isAuthorized) {
-                            return func(req, connection)
+                            return func(req)
                         }
                         else {
                             throw new ExpressError.UnAthorized(req.user.message)
@@ -61,10 +60,9 @@ const wrapForExpressWithMongo = (opName, func, requireAuthorization) => {
                     })
                 }
                 else {
-                    return func(req, connection)
+                    return func(req)
                 }
             })
-        })
     }
 }
 
