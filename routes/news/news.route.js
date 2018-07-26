@@ -9,6 +9,7 @@ module.exports = (app) => {
     app.get('/news/getnewschuaduyet', Wraper("newschuaduyet",newsCtl.getNewsChuaDuyet,true))
     app.get('/news/getnewsdaduyet', Wraper("newsdaduyet",newsCtl.getNewsTrangThaiTrue,true))
     app.get('/news/getuserdanhgia', Wraper("userdanhgia",newsCtl.getUserDanhGia,true))
+    app.get('/news/getNewsOfUserDanhGia', Wraper("getNewsOfUserDanhGia",newsCtl.getNewsOfUserDanhGia,true))
 
 
     app.post('/news/updateiduserrole', Wraper("updateiduserrole",newsCtl.createIdUserDanhGia,true))
