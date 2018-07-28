@@ -39,7 +39,7 @@ const UserSchema = mongoose.Schema({
     default: true
   },
   role: {
-    type: String,
+    type: Number,
     default: 4
   }
 }, {

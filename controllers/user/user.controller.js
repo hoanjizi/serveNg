@@ -22,14 +22,14 @@ const UserLogic = require('../../models/user/user.logic.js')
 
 exports.createUser = (req, res) => {
     const user = new User({
-        nickname:req.body.nickname,
-        firstname:req.body.firstname,
-        lastname:req.body.lastname,
+        nickname: req.body.nickname,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
         passwordConf: req.body.passwordConf,
-        country:req.body.country
+        country: req.body.country
     });
     let random = Utils.randomtoken(35)
     return user.save().then(data => {
@@ -67,11 +67,11 @@ exports.findOneUser = (req) => {
                     let newtoken = new Token({
                         idUser: user._id,
                         token: tokeninsert,
-                        nickname:user.nickname,
+                        nickname: user.nickname,
                         timeToken: moment().unix() + 86400
                     });
                     return newtoken.save().then((data) => {
-                        return ViewModel.viewmodels.usertoken(data.idUser, data.token,user.role,user.nickname)
+                        return ViewModel.viewmodels.usertoken(data.idUser, data.token, user.role, user.nickname)
                     })
                 }
                 else {
@@ -81,14 +81,24 @@ exports.findOneUser = (req) => {
 
         })
 }
-exports.getUserRoleThree = (req)=>{
-    return User.find({role:"3"}).then(res=>{
+exports.getUserRoleThree = (req) => {
+    return User.find({ role: "3" }).then(res => {
         return ViewModel.viewmodels.listuser(res)
     })
 }
 exports.getUserId = (req) => {
     return User.findById(req.query.id).then(rtl => {
         return ViewModel.viewmodels.user(rtl)
+    })
+}
+exports.getUserRoleAll = (req) => {
+    return User.find({ role: { $gte: 2 } }).then(rtl => {
+        return ViewModel.viewmodels.listuser(rtl)
+    })
+}
+exports.updateRoleUser = (req) => {
+    return User.findByIdAndUpdate(req.query.id, { $set: { role: req.query.role } }).then(rtl => {
+        return ViewModel.viewmodels.message('updated');
     })
 }
 

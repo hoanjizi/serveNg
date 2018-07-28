@@ -6,6 +6,8 @@ module.exports = (app) => {
     app.get('/users', Wraper("getuser",users.findAllUser,true))
     app.get('/getrolethree', Wraper("getuser",users.getUserRoleThree,true))
     app.get('/getuserid', Wraper("getuser",users.getUserId,true))
+    app.get('/getUserRoleAll', Wraper("getUserRoleAll",users.getUserRoleAll,true))
+    app.get('/updateRoleUser', Wraper("updateRoleUser",users.updateRoleUser,true))
 
     app.post('/login',urlEncode,Wraper("Login", users.findOneUser,false))
 
