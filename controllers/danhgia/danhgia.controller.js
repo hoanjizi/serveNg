@@ -23,3 +23,17 @@ exports.createDanhGia = (req) => {
         })
     }
 }
+exports.getAllDanhGia = (req) =>{
+    return DanhGia.find().then(rtl => {
+        return ViewModel.viewmodelsDanhGia.getAllDanhGia(rtl);
+    })
+}
+exports.downloadFile = (req, res) => {
+    res.download(__dirname + "/file/" + req.params.ten)
+}
+exports.getBaiDanhGia = (req) => {
+    return DanhGia.findById(req.query.idDanhGia).then(rtl => {
+        return ViewModel.viewmodelsDanhGia.getAllDanhGia(rtl);
+    })
+
+}

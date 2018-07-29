@@ -5,12 +5,12 @@ class viewmodels {
     static listuser(users) {
         let arrayUsers = []
         users.forEach(e => {
-            arrayUsers.push({ id: e._id, username: e.username, email: e.email, role: e.role,nickname: e.nickname })
+            arrayUsers.push({ id: e._id, username: e.username, email: e.email, role: e.role, nickname: e.nickname })
         });
         return arrayUsers
     }
     static user(e) {
-        return { id: e._id, username: e.username, email: e.email, role: e.role,nickname: e.nickname }
+        return { id: e._id, username: e.username, email: e.email, role: e.role, nickname: e.nickname }
     }
     static profileUser(users) {
 
@@ -56,6 +56,15 @@ class viewmodelsNotifi {
         return arrayNotifi
     }
 }
+class viewmodelsDanhGia {
+    static getAllDanhGia(news) {
+        let arrayNews = []
+        news.forEach(e => {
+            arrayNews.push({ id: e._id, tieuDe: e.tieuDe, danhGiaContent: e.danhGiaContent, mucDo: e.mucDo, tenFile: e.tenFile, createdAt: e.createdAt })
+        });
+        return arrayNews
+    }
+}
 class viewmodelsNews {
     static getNewsWithid(news) {
         let arrayNews = []
@@ -69,7 +78,7 @@ class viewmodelsNews {
     }
 }
 module.exports = {
-    viewmodels, viewmodelsNotifi, viewmodelsNews
+    viewmodels, viewmodelsNotifi, viewmodelsNews, viewmodelsDanhGia
 }
 
 /*
