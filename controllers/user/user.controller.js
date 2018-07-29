@@ -101,4 +101,9 @@ exports.updateRoleUser = (req) => {
         return ViewModel.viewmodels.message('updated');
     })
 }
+exports.deleteUser = (req) => {
+    return User.findByIdAndRemove(req.query.id).then(rtl => {
+        return ViewModel.viewmodels.message('deleted');
+    })
+}
 

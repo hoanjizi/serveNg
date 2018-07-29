@@ -86,7 +86,7 @@ exports.getUserDanhGia = (req) => {
 
 }
 exports.getNewsOfUserDanhGia = (req) => {
-    return News.find({ 'idUserDanhGia.id': req.query.id }).then(rtl => {
+    return News.find({ 'idUserDanhGia.id': req.query.id,trangthaiDaDanhGia: false }).then(rtl => {
         return ViewModel.viewmodelsNews.getNewsWithid(rtl)
     })
 }

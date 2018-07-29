@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
 const DanhGiaSchema = mongoose.Schema({
-    idNews:String,
-    idUser:String,
-    status: {
-        type: Boolean,
-        default: false
-    }
+    tieuDe: String,
+    danhGiaContent: String,
+    tenFile: String,
+    mucDo: String
 }, {
-    timestamps: true
-})
+        timestamps: true
+    })
 module.exports = mongoose.model('DanhGia', DanhGiaSchema)

@@ -23,6 +23,9 @@ class viewmodels {
     static message(text) {
         return { message: text }
     }
+    static mess(text) {
+        return text;
+    }
 }
 class viewmodelsNotifi {
     static getThreeNotifi(notifi) {

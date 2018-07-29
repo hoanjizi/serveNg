@@ -33,6 +33,10 @@ const NewsSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    trangthaiDaDanhGia: {
+        type: Boolean,
+        default:false
+    },
     idUserDanhGia: {
         type: []
     }

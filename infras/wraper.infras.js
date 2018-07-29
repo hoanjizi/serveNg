@@ -21,9 +21,6 @@ const wrapper = (opName, req, res, func) => {
             return Promise.resolve(func(req))
         })
         .then((responseBody) => {
-            if (!responseBody) {
-                throw new ExpressError.BadRequest("Error response")
-            }
             res.status(successCode).send(new ExpressResponse("Success", responseBody));
             console.log('request end ' + new Date())
         })
