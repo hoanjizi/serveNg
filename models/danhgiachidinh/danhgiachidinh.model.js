@@ -7,7 +7,7 @@ const DanhGiaChiDinh = mongoose.Schema({
         type: String
     },
     trangThai: {
-        type: String,
+        type: Boolean,
         default: false
     }
 })

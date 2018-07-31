@@ -11,7 +11,6 @@ module.exports = (app) => {
     app.get('/news/getuserdanhgia', Wraper("userdanhgia",newsCtl.getUserDanhGia,true))
     app.get('/news/getNewsOfUserDanhGia', Wraper("getNewsOfUserDanhGia",newsCtl.getNewsOfUserDanhGia,true))
 
-
     app.post('/news/updateiduserrole', Wraper("updateiduserrole",newsCtl.createIdUserDanhGia,true))
     app.post('/news/getcountroleuser', Wraper("getCountRoleUser",newsCtl.getCountRoleUser,true))
     app.post('/news/updateStatusRoleUser', Wraper("updateStatusRoleUser",newsCtl.updateStatusRoleUser,true))

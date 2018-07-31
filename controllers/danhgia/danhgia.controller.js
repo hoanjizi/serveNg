@@ -3,6 +3,7 @@ const DanhGia = require('../../models/danhgia/danhgia.model')
 const ExpressError = require('../../models/error.model')
 const ViewModel = require('../../viewmodels/viewmodels.js')
 const User = require('../../models/user/users.model')
+const DGCD = require('../../models/danhgiachidinh/danhgiachidinh.model')
 
 exports.createDanhGia = (req) => {
     let file = req.files.file
@@ -17,13 +18,17 @@ exports.createDanhGia = (req) => {
                 tenFile: nameformat
             })
             return danhgia.save().then(() => {
-                return News.findByIdAndUpdate(req.body.idNews, { $set: { trangthaiDaDanhGia: true } })
+                return News.findByIdAndUpdate(req.body.idNews, { $set: { trangthaiDaDanhGia: true } }).then(() => {
+                    return DGCD.findByIdAndUpdate(req.body.idDG, { $set: { trangThai: true } }).then(()=>{
+                        return ViewModel.viewmodels.message('ok')
+                    })
+                })
             })
 
         })
     }
 }
-exports.getAllDanhGia = (req) =>{
+exports.getAllDanhGia = (req) => {
     return DanhGia.find().then(rtl => {
         return ViewModel.viewmodelsDanhGia.getAllDanhGia(rtl);
     })

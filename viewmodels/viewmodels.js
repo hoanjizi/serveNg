@@ -65,6 +65,15 @@ class viewmodelsDanhGia {
         return arrayNews
     }
 }
+class viewmodelsDanhGiaChiDinh {
+    static getDanhGiaChiDinh(news) {
+        let arrayNews = []
+        news.forEach(e => {
+            arrayNews.push({ id: e._id, trangThai: e.trangThai, idNews: e.idNews, idUser: e.idUser})
+        });
+        return arrayNews
+    }
+}
 class viewmodelsNews {
     static getNewsWithid(news) {
         let arrayNews = []
@@ -78,7 +87,7 @@ class viewmodelsNews {
     }
 }
 module.exports = {
-    viewmodels, viewmodelsNotifi, viewmodelsNews, viewmodelsDanhGia
+    viewmodels, viewmodelsNotifi, viewmodelsNews, viewmodelsDanhGia,viewmodelsDanhGiaChiDinh
 }
 
 /*
