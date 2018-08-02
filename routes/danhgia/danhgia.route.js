@@ -6,6 +6,7 @@ module.exports = (app) => {
     app.post('/danhgia/createDanhGia',urlEncode, Wraper("createDanhGia",danhGiaCtl.createDanhGia,true))
     app.get('/danhgia/getAllDanhGia', Wraper("getAllDanhGia",danhGiaCtl.getAllDanhGia,true))
     app.get('/danhgia/getBaiDanhGia', Wraper("getBaiDanhGia",danhGiaCtl.getBaiDanhGia,true))
+    app.get('/danhgia/getDanhGiaReviewer', Wraper("getDanhGiaReviewer",danhGiaCtl.getDanhGiaReviewer,true))
 
 
     app.get('/danhgia/download/:ten', danhGiaCtl.downloadFile)

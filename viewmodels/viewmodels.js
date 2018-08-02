@@ -60,7 +60,7 @@ class viewmodelsDanhGia {
     static getAllDanhGia(news) {
         let arrayNews = []
         news.forEach(e => {
-            arrayNews.push({ id: e._id, tieuDe: e.tieuDe, danhGiaContent: e.danhGiaContent, mucDo: e.mucDo, tenFile: e.tenFile, createdAt: e.createdAt })
+            arrayNews.push({ id: e._id, tieuDe: e.tieuDe, danhGiaContent: e.danhGiaContent, mucDo: e.mucDo, tenFile: e.tenFile, createdAt: e.createdAt, nickname: e.nickname, username: e.username })
         });
         return arrayNews
     }
@@ -69,7 +69,7 @@ class viewmodelsDanhGiaChiDinh {
     static getDanhGiaChiDinh(news) {
         let arrayNews = []
         news.forEach(e => {
-            arrayNews.push({ id: e._id, trangThai: e.trangThai, idNews: e.idNews, idUser: e.idUser})
+            arrayNews.push({ id: e._id, trangThai: e.trangThai, idNews: e.idNews, idUser: e.idUser })
         });
         return arrayNews
     }
@@ -87,7 +87,7 @@ class viewmodelsNews {
     }
 }
 module.exports = {
-    viewmodels, viewmodelsNotifi, viewmodelsNews, viewmodelsDanhGia,viewmodelsDanhGiaChiDinh
+    viewmodels, viewmodelsNotifi, viewmodelsNews, viewmodelsDanhGia, viewmodelsDanhGiaChiDinh
 }
 
 /*
