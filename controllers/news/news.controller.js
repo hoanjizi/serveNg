@@ -3,6 +3,7 @@ const DanhGia = require('../../models/danhgia/danhgia.model')
 const ExpressError = require('../../models/error.model')
 const ViewModel = require('../../viewmodels/viewmodels.js')
 const User = require('../../models/user/users.model')
+const DGCD = require('../../models/danhgiachidinh/danhgiachidinh.model')
 
 exports.createNews = (req, res) => {
 
@@ -80,8 +81,8 @@ exports.getNewsTrangThaiTrue = (req) => {
     })
 }
 exports.getUserDanhGia = (req) => {
-    return News.findById(req.query.idDanhGia).then(rtl => {
-        return ViewModel.viewmodelsNotifi.getUserDanhGia(rtl.idUserDanhGia)
+    return DGCD.find({idNews:req.query.idDanhGia}).then(rtl => {
+        return ViewModel.viewmodelsDanhGiaChiDinh.getDanhGiaChiDinh(rtl)
     })
 
 }

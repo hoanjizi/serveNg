@@ -7,6 +7,8 @@ module.exports = (app) => {
     app.get('/danhgia/getAllDanhGia', Wraper("getAllDanhGia",danhGiaCtl.getAllDanhGia,true))
     app.get('/danhgia/getBaiDanhGia', Wraper("getBaiDanhGia",danhGiaCtl.getBaiDanhGia,true))
     app.get('/danhgia/getDanhGiaReviewer', Wraper("getDanhGiaReviewer",danhGiaCtl.getDanhGiaReviewer,true))
+    app.get('/danhgia/updateTrangThai', Wraper("updateTrangThai",danhGiaCtl.updateTrangThai,true))
+    app.get('/danhgia/getDanhGiaTrangThaiTrue', Wraper("getDanhGiaTrangThaiTrue",danhGiaCtl.getDanhGiaTrangThaiTrue,true))
 
 
     app.get('/danhgia/download/:ten', danhGiaCtl.downloadFile)

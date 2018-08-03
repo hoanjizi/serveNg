@@ -11,7 +11,7 @@ exports.createDanhGia = (req) => {
         let nameformat = file.name.replace(/[^A-Z0-9.]+/ig, "_");
         file.mv(__dirname + "/file/" + nameformat, (err) => {
             if (err) return;
-            return User.findById(req.body.idUser).then(rtl =>{
+            return User.findById(req.body.idUser).then(rtl => {
                 let danhgia = new DanhGia({
                     tieuDe: req.body.tieuDe,
                     danhGiaContent: req.body.danhGiaContent,
@@ -20,17 +20,18 @@ exports.createDanhGia = (req) => {
                     idUser: req.body.idUser,
                     nickname: rtl.nickname,
                     username: rtl.username,
+                    idUserNews: req.body.idUserNews,
                     tenFile: nameformat
                 })
                 return danhgia.save().then(() => {
                     return News.findByIdAndUpdate(req.body.idNews, { $set: { trangthaiDaDanhGia: true } }).then(() => {
-                        return DGCD.findByIdAndUpdate(req.body.idDG, { $set: { trangThai: true } }).then(()=>{
+                        return DGCD.findByIdAndUpdate(req.body.idDG, { $set: { trangThai: true } }).then(() => {
                             return ViewModel.viewmodels.message('ok')
                         })
                     })
                 })
             })
-            
+
 
         })
     }
@@ -49,8 +50,18 @@ exports.getBaiDanhGia = (req) => {
     })
 
 }
-exports.getDanhGiaReviewer = (req)=>{
-    return DanhGia.find({idNews: req.query.idNews}).then(rtl=>{
+exports.getDanhGiaReviewer = (req) => {
+    return DanhGia.find({ idNews: req.query.idNews }).then(rtl => {
+        return ViewModel.viewmodelsDanhGia.getAllDanhGia(rtl);
+    })
+}
+exports.updateTrangThai = (req) => {
+    return DanhGia.findByIdAndUpdate(req.query.id, { $set: { trangthai: true } }).then(rtl => {
+        return ViewModel.viewmodels.message('ok')
+    })
+}
+exports.getDanhGiaTrangThaiTrue = (req) => {
+    return DanhGia.find({ trangthai: true, idUserNews: req.query.idUserNews }).then(rtl => {
         return ViewModel.viewmodelsDanhGia.getAllDanhGia(rtl);
     })
 }

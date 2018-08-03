@@ -24,6 +24,10 @@ const DanhGiaSchema = mongoose.Schema({
         type: String,
         default: ""
     },
+    idUserNews: {
+        type: String,
+        default: ""
+    },
     nickname:{
         type: String,
         default: ""
@@ -31,6 +35,10 @@ const DanhGiaSchema = mongoose.Schema({
     username:{
         type: String,
         default: ""
+    },
+    trangthai: {
+        type: Boolean,
+        default: false
     }
 }, {
         timestamps: true

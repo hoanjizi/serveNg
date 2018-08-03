@@ -60,7 +60,11 @@ class viewmodelsDanhGia {
     static getAllDanhGia(news) {
         let arrayNews = []
         news.forEach(e => {
-            arrayNews.push({ id: e._id, tieuDe: e.tieuDe, danhGiaContent: e.danhGiaContent, mucDo: e.mucDo, tenFile: e.tenFile, createdAt: e.createdAt, nickname: e.nickname, username: e.username })
+            arrayNews.push({
+                id: e._id, tieuDe: e.tieuDe, danhGiaContent: e.danhGiaContent,
+                mucDo: e.mucDo, tenFile: e.tenFile, createdAt: e.createdAt,
+                nickname: e.nickname, username: e.username, trangthai: e.trangthai
+            })
         });
         return arrayNews
     }
@@ -78,12 +82,22 @@ class viewmodelsNews {
     static getNewsWithid(news) {
         let arrayNews = []
         news.forEach(e => {
-            arrayNews.push({ id: e._id, iduser: e.id, tieude: e.tieude, tacgia: e.tacgia, tukhoa: e.tukhoa, tomtat: e.tomtat, tenfile: e.tenfile, sobao: e.sobao, trangthai: e.trangthai, createdAt: e.createdAt, idUserDanhgia: e.idUserDanhgia })
+            arrayNews.push({
+                id: e._id, iduser: e.id, tieude: e.tieude,
+                tacgia: e.tacgia, tukhoa: e.tukhoa, tomtat: e.tomtat, tenfile: e.tenfile,
+                sobao: e.sobao, trangthai: e.trangthai, createdAt: e.createdAt,
+                idUserDanhgia: e.idUserDanhgia
+            })
         });
         return arrayNews
     }
     static getNewsWithIdMongo(e) {
-        return { id: e._id, iduser: e.id, tieude: e.tieude, tacgia: e.tacgia, tukhoa: e.tukhoa, tomtat: e.tomtat, tenfile: e.tenfile, sobao: e.sobao, trangthai: e.trangthai, createdAt: e.createdAt, idUserDanhgia: e.idUserDanhgia }
+        return {
+            id: e._id, iduser: e.id, tieude: e.tieude, tacgia: e.tacgia,
+            tukhoa: e.tukhoa, tomtat: e.tomtat, tenfile: e.tenfile,
+            sobao: e.sobao, trangthai: e.trangthai,
+            createdAt: e.createdAt, idUserDanhgia: e.idUserDanhgia
+        }
     }
 }
 module.exports = {
