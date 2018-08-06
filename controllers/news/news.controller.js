@@ -96,3 +96,8 @@ exports.getNewsDaDanhGia = (req) => {
         return ViewModel.viewmodelsNews.getNewsWithid(rtl)
     })
 }
+exports.deleteNews = (req)=>{
+    return News.findByIdAndRemove(req.query.id).then(rtl=>{
+        return ViewModel.viewmodels.message('deleted')
+    })
+}
