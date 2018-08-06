@@ -5,7 +5,7 @@ class viewmodels {
     static listuser(users) {
         let arrayUsers = []
         users.forEach(e => {
-            arrayUsers.push({ id: e._id, username: e.username, email: e.email, role: e.role, nickname: e.nickname })
+            arrayUsers.push({ id: e._id, username: e.username, email: e.email, role: e.role, nickname: e.nickname,createdAt: e.createdAt })
         });
         return arrayUsers
     }
